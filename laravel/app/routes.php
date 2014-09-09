@@ -11,8 +11,21 @@
 |
 */
 
-Route::get('/', function()
+Route::get('/',  'AgendaController@Index');
+
+Route::get('/novoEvento',  function()
 {
-	//return View::make('hello');
-	return 'teste William!!!!!';
+	return View::make('cadastroEvento');
 });
+
+Route::model('agenda', 'Agenda');
+
+Route::post('/novoEvento', 'AgendaController@NovoEvento');
+
+Route::get('/editarEvento/{agenda}', 'AgendaController@EditarEvento');
+
+Route::post('/editarEvento/{agenda}', 'AgendaController@EditarEvento');
+
+Route::get('/deletarEvento/{agenda}','AgendaController@DeletarEvento');
+
+Route::post('/deletarEvento/{agenda}','AgendaController@DeletarEvento');
